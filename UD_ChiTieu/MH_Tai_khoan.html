@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+	<title>Quản lý Chi</title>
+
+	<meta name="description" content="Static &amp; Dynamic Tables" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+	<!-- bootstrap & fontawesome -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+	<!-- page specific plugin styles -->
+
+	<!-- text fonts -->
+	<!-- <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" /> -->
+
+	<!-- ace styles -->
+	<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+	<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+	<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+	<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+
+	<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+	<!-- inline styles related to this page -->
+
+	<!-- ace settings handler -->
+	<script src="assets/js/ace-extra.min.js"></script>
+
+	<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+	<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+
+<body class="no-skin" style="font-family: Arial">
+	<div id="navbar" class="navbar navbar-default          ace-save-state">
+		<div class="navbar-container ace-save-state" id="navbar-container">
+			<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+				<span class="sr-only">Toggle sidebar</span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="navbar-header pull-left">
+				<a href="MH_Chinh.html" class="navbar-brand">
+					<small>
+						<i class="fa fa-credit-card"></i>
+						Quản lý Thu Chi
+					</small>
+				</a>
+			</div>
+
+			<div class="navbar-buttons navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					<li class="light-blue dropdown-modal">
+						<a data-toggle="dropdown" href="#" class="dropdown-toggle" id="Th_Anh_dai_dien">
+
+						</a>
+
+						<ul
+							class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							
+
+							<li>
+								<a href="MH_Tai_khoan.html">
+									<i class="ace-icon fa fa-user"></i>
+									Profile
+								</a>
+							</li>
+
+							<li class="divider"></li>
+
+							<li id="Th_Thoat" onclick="XL_Thoat_Dang_nhap()">
+								<a href="#">
+									<i class="ace-icon fa fa-power-off"></i>
+									Logout
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.navbar-container -->
+	</div>
+
+	<div class="main-container ace-save-state" id="main-container">
+		<script type="text/javascript">
+			try { ace.settings.loadState('main-container') } catch (e) { }
+		</script>
+
+		<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+			<script type="text/javascript">
+				try { ace.settings.loadState('sidebar') } catch (e) { }
+			</script>
+
+			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+					<button class="btn btn-success">
+						<i class="ace-icon fa fa-signal"></i>
+					</button>
+
+					<button class="btn btn-info">
+						<i class="ace-icon fa fa-pencil"></i>
+					</button>
+
+					<button class="btn btn-warning">
+						<i class="ace-icon fa fa-users"></i>
+					</button>
+
+					<button class="btn btn-danger">
+						<i class="ace-icon fa fa-cogs"></i>
+					</button>
+				</div>
+
+				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+					<span class="btn btn-success"></span>
+
+					<span class="btn btn-info"></span>
+
+					<span class="btn btn-warning"></span>
+
+					<span class="btn btn-danger"></span>
+				</div>
+			</div><!-- /.sidebar-shortcuts -->
+
+			<ul class="nav nav-list">
+				<li class="">
+					<a href="MH_Chinh.html">
+						<i class="menu-icon fa fa-home "></i>
+						<span class="menu-text"> Trang chủ </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="MH_Thu.html">
+						<i class="menu-icon fa fa-arrow-circle-o-down  "></i>
+						<span class="menu-text"> Khoản Thu </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="MH_Chi.html">
+						<i class="menu-icon fa fa-pencil-square-o "></i>
+						<span class="menu-text"> Khoản Chi </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="MH_Cho_vay.html">
+						<i class="menu-icon fa fa-external-link"></i>
+						<span class="menu-text"> Cho Vay </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+				<li class="">
+					<a href="MH_Muon_no.html">
+						<i class="menu-icon fa fa-list-alt"></i>
+						<span class="menu-text"> Mượn Nợ </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+
+				<li class="">
+					<a href="MH_Thong_ke.html">
+						<i class="menu-icon fa fa-signal"></i>
+						<span class="menu-text"> Thống Kê </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="MH_Tai_khoan.html">
+						<i class="menu-icon fa fa-users"></i>
+						<span class="menu-text"> Tài Khoản </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+			</ul><!-- /.nav-list -->
+
+			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+				<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+					data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+			</div>
+		</div>
+
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="#">Trang Chủ</a>
+						</li>
+
+						<li>
+							<a href="#">Tài khoản</a>
+						</li>
+					</ul><!-- /.breadcrumb -->
+
+					<div class="nav-search" id="nav-search">
+						<form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="nav-search-input"
+									id="nav-search-input" autocomplete="off" />
+								<i class="ace-icon fa fa-search nav-search-icon"></i>
+							</span>
+						</form>
+					</div><!-- /.nav-search -->
+				</div>
+
+
+
+				<div class="page-content">
+					
+					<div id="Th_Ngay_Hien_Hanh" style="font-size: 15px; color:green;"></div>
+
+					<div class="row">
+						<div class="col-12">
+							<h3 class="row header smaller lighter blue">
+								<span class="col-xs-6"> Cài đặt tài khoản </span><!-- /.col -->
+							</h3>
+
+							<div id="accordion" class="accordion-style1 panel-group">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+												href="#collapseOne">
+												<i class="ace-icon fa fa-angle-down bigger-110"
+													data-icon-hide="ace-icon fa fa-angle-down"
+													data-icon-show="ace-icon fa fa-angle-right"></i>
+												&nbsp;Người quản lý
+											</a>
+										</h4>
+									</div>
+
+									<div class="panel-collapse collapse in" id="collapseOne">
+										<div class="panel-body" id="Th_Body_1">
+										</div>
+									</div>
+								</div>
+
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle collapsed" data-toggle="collapse"
+												data-parent="#accordion" href="#collapseTwo">
+												<i class="ace-icon fa fa-angle-right bigger-110"
+													data-icon-hide="ace-icon fa fa-angle-down"
+													data-icon-show="ace-icon fa fa-angle-right"></i>
+												&nbsp;Đổi mật khẩu
+											</a>
+										</h4>
+									</div>
+
+									<div class="panel-collapse collapse" id="collapseTwo">
+										<div class="panel-body">
+											<form class="form-horizontal" role="form">
+												<div class="form-group">
+													<label class="col-sm-4 control-label no-padding-right"
+														for="Th_Mat_khau_cu" style="left: 4px">
+														Mật khẩu cũ </label>
+
+													<div class="col-sm-8" style="left: 4px">
+														<input type="password" id="Th_Mat_khau_cu"
+															placeholder="Nhập mật khẩu cũ" class="col-xs-10 col-sm-5" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-4 control-label no-padding-right"
+														for="Th_Mat_khau_moi" style="left: 4px">
+														Mật khẩu mới </label>
+
+													<div class="col-sm-8" style="left: 4px">
+														<input type="password" id="Th_Mat_khau_moi"
+															placeholder="Nhập mật khẩu mới"
+															class="col-xs-10 col-sm-5" />
+														<br>
+
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-4 control-label no-padding-right"
+														for="Th_Mat_khau_moi" style="left: 4px">
+														Nhập lại mật khẩu mới </label>
+
+													<div class="col-sm-8" style="left: 4px">
+														<input type="password" id="Th_Mat_khau_moi_lap"
+															placeholder="Nhập lại mật khẩu mới"
+															class="col-xs-10 col-sm-5" />
+														<br>
+
+													</div>
+												</div>
+												<div class="col-sm-4">
+
+												</div>
+												<div class="col-sm-8">
+													<button class="btn btn-sm btn-success" type="button"
+														style="float: left;" id="Th_Dong_y_doi">
+														<i class="ace-icon fa fa-refresh"></i>
+														Thay đổi
+													</button>
+												</div>
+												<div class="col-sm-4"></div>
+												<div class="col-sm-8" id="Th_Thong_bao"></div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle collapsed" data-toggle="collapse"
+												data-parent="#accordion" href="#collapseThree">
+												<i class="ace-icon fa fa-angle-right bigger-110"
+													data-icon-hide="ace-icon fa fa-angle-down"
+													data-icon-show="ace-icon fa fa-angle-right"></i>
+												&nbsp;Thay đổi ảnh đại diện
+											</a>
+										</h4>
+									</div>
+
+									<div class="panel-collapse collapse" id="collapseThree">
+										<div class="panel-body">
+											<div class="form-group">
+												<label for="Th_file">Chọn hình</label>
+												<input id="Th_file" type="file" onchange="Xem_truoc_Media()"
+													accept="image/png" />
+												<img id="Th_Hinh_Xem_truoc" style="width:10rem" />
+											</div>
+
+											<div id="Th_Thong_bao_hinh"></div>
+
+											<div>
+												<button class="btn btn-sm btn-success" type="button"
+													style="float: left;" id="Th_Dong_y_hinh">
+													<i class="ace-icon fa fa-refresh"></i>
+													Thay đổi
+												</button>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div>
+
+			</div>
+		</div>
+	</div><!-- /.main-content -->
+
+	<div class="footer">
+		<div class="footer-inner">
+			<div class="footer-content">
+				<span class="bigger-120">
+					<span class="blue bolder">Quản lý</span>
+					Thu Chi &copy; 2019
+				</span>
+
+				&nbsp; &nbsp;
+				<span class="action-buttons">
+					<a href="#">
+						<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+					</a>
+
+					<a href="#">
+						<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+					</a>
+
+					<a href="#">
+						<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+	</a>
+	</div><!-- /.main-container -->
+
+	<!-- basic scripts -->
+
+	<!--[if !IE]> -->
+	<script src="assets/js/jquery-2.1.4.min.js"></script>
+
+	<!-- <![endif]-->
+
+	<!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+	<script type="text/javascript">
+		if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+	</script>
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<!-- page specific plugin scripts -->
+	<script src="assets/js/jquery.dataTables.min.js"></script>
+	<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+	<script src="assets/js/dataTables.buttons.min.js"></script>
+	<script src="assets/js/buttons.flash.min.js"></script>
+	<script src="assets/js/buttons.html5.min.js"></script>
+	<script src="assets/js/buttons.print.min.js"></script>
+	<script src="assets/js/buttons.colVis.min.js"></script>
+	<script src="assets/js/dataTables.select.min.js"></script>
+
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
+	<script src="Xu_ly/Xu_ly_3L.js"></script>
+	<!-- inline scripts related to this page -->
+	<script type="text/javascript">
+		jQuery(function ($) {
+			//initiate dataTables plugin
+			var myTable =
+				$('#dynamic-table')
+					//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+					.DataTable({
+						bAutoWidth: false,
+						"aoColumns": [
+							{ "bSortable": false },
+							null, null, null, null, null,
+							{ "bSortable": false }
+						],
+						"aaSorting": [],
+
+
+						//"bProcessing": true,
+						//"bServerSide": true,
+						//"sAjaxSource": "http://127.0.0.1/table.php"	,
+
+						//,
+						//"sScrollY": "200px",
+						//"bPaginate": false,
+
+						//"sScrollX": "100%",
+						//"sScrollXInner": "120%",
+						//"bScrollCollapse": true,
+						//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+						//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+
+						//"iDisplayLength": 50
+
+
+						select: {
+							style: 'multi'
+						}
+					});
+
+
+
+			$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+
+			myTable.buttons().container().appendTo($('.tableTools-container'));
+
+			//style the message box
+			var defaultCopyAction = myTable.button(1).action();
+			myTable.button(1).action(function (e, dt, button, config) {
+				defaultCopyAction(e, dt, button, config);
+				$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+			});
+
+
+			var defaultColvisAction = myTable.button(0).action();
+			myTable.button(0).action(function (e, dt, button, config) {
+
+				defaultColvisAction(e, dt, button, config);
+
+
+				if ($('.dt-button-collection > .dropdown-menu').length == 0) {
+					$('.dt-button-collection')
+						.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+						.find('a').attr('href', '#').wrap("<li />")
+				}
+				$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+			});
+
+			////
+
+			setTimeout(function () {
+				$($('.tableTools-container')).find('a.dt-button').each(function () {
+					var div = $(this).find(' > div').first();
+					if (div.length == 1) div.tooltip({ container: 'body', title: div.parent().text() });
+					else $(this).tooltip({ container: 'body', title: $(this).text() });
+				});
+			}, 500);
+
+
+
+
+
+			myTable.on('select', function (e, dt, type, index) {
+				if (type === 'row') {
+					$(myTable.row(index).node()).find('input:checkbox').prop('checked', true);
+				}
+			});
+			myTable.on('deselect', function (e, dt, type, index) {
+				if (type === 'row') {
+					$(myTable.row(index).node()).find('input:checkbox').prop('checked', false);
+				}
+			});
+
+
+
+
+			/////////////////////////////////
+			//table checkboxes
+			$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+
+			//select/deselect all rows according to table header checkbox
+			$('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function () {
+				var th_checked = this.checked;//checkbox inside "TH" table header
+
+				$('#dynamic-table').find('tbody > tr').each(function () {
+					var row = this;
+					if (th_checked) myTable.row(row).select();
+					else myTable.row(row).deselect();
+				});
+			});
+
+			//select/deselect a row when the checkbox is checked/unchecked
+			$('#dynamic-table').on('click', 'td input[type=checkbox]', function () {
+				var row = $(this).closest('tr').get(0);
+				if (this.checked) myTable.row(row).deselect();
+				else myTable.row(row).select();
+			});
+
+
+
+			$(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
+				e.stopImmediatePropagation();
+				e.stopPropagation();
+				e.preventDefault();
+			});
+
+
+
+			//And for the first simple table, which doesn't have TableTools or dataTables
+			//select/deselect all rows according to table header checkbox
+			var active_class = 'active';
+			$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
+				var th_checked = this.checked;//checkbox inside "TH" table header
+
+				$(this).closest('table').find('tbody > tr').each(function () {
+					var row = this;
+					if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+					else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+				});
+			});
+
+			//select/deselect a row when the checkbox is checked/unchecked
+			$('#simple-table').on('click', 'td input[type=checkbox]', function () {
+				var $row = $(this).closest('tr');
+				if ($row.is('.detail-row ')) return;
+				if (this.checked) $row.addClass(active_class);
+				else $row.removeClass(active_class);
+			});
+
+
+
+			/********************************/
+			//add tooltip for small view action buttons in dropdown menu
+			$('[data-rel="tooltip"]').tooltip({ placement: tooltip_placement });
+
+			//tooltip placement on right or left
+			function tooltip_placement(context, source) {
+				var $source = $(source);
+				var $parent = $source.closest('table')
+				var off1 = $parent.offset();
+				var w1 = $parent.width();
+
+				var off2 = $source.offset();
+				//var w2 = $source.width();
+
+				if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+				return 'left';
+			}
+
+
+
+
+			/***************/
+			$('.show-details-btn').on('click', function (e) {
+				e.preventDefault();
+				$(this).closest('tr').next().toggleClass('open');
+				$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+			});
+
+		})
+	</script>
+	<script>
+		var d = new Date();
+		var Ngay_hien_hanh = d.getDate();
+		var Thang_hien_hanh = d.getMonth() + 1;
+		var Nam_hien_hanh = d.getFullYear();
+		Th_Ngay_Hien_Hanh.innerHTML = `Hôm nay là ngày: ${Ngay_hien_hanh} - ${Thang_hien_hanh} - ${Nam_hien_hanh}`
+
+	</script>
+
+	<!-- ********************************************************** -->
+	<!-- Xử lý dữ liệu -->
+
+	<script>
+		if (!sessionStorage.getItem("Nguoi_dung")) {
+			window.location = 'MH_Dang_nhap.html'
+		}
+		else {
+
+			//Tải ảnh đăng nhập
+
+			var Ten_anh = JSON.parse(sessionStorage.getItem("Nguoi_dung")).Ten_dang_nhap
+			XL_Anh_dang_nhap(Th_Anh_dai_dien, Ten_anh)
+		}
+
+		//Xử lý thoát đoăng nhập
+
+		function XL_Thoat_Dang_nhap() {
+			sessionStorage.clear()
+			window.location = "MH_Dang_nhap.html"
+		}
+
+		//Thông tin người quản lý
+
+		var Quan_ly = JSON.parse(sessionStorage.getItem("Nguoi_dung")).Nguoi_quan_ly
+		Th_Body_1.innerHTML = `<strong>Người quản lý:</strong> ${Quan_ly}`
+
+		//Thay đổi mật khẩu
+
+		Th_Dong_y_doi.onclick = () => {
+			var Mat_khau_cu = Th_Mat_khau_cu.value
+			var Mat_khau_moi = Th_Mat_khau_moi.value
+			var Mat_khau_moi_lap = Th_Mat_khau_moi_lap.value
+			if (Mat_khau_cu == "" || Mat_khau_moi == "") {
+				Th_Thong_bao.innerHTML = `<p style="color: red;">Cần nhập đầy đủ thông tin !</p>`
+			}
+			else if (Mat_khau_cu == Mat_khau_moi) {
+				Th_Thong_bao.innerHTML = `<p style="color: red;">Mật khẩu cũ và mới cần khác nhau !</p>`
+			}
+			else if (Mat_khau_moi != Mat_khau_moi_lap) {
+				Th_Thong_bao.innerHTML = `<p style="color: red;">Bạn cần nhập lại đúng mật khẩu mới !</p>`
+			}
+			else {
+				var Thong_tin = {}
+				Thong_tin.Ten_dang_nhap = JSON.parse(sessionStorage.getItem("Nguoi_dung")).Ten_dang_nhap
+				Thong_tin.Mat_khau_moi = Mat_khau_moi
+				Thong_tin.Mat_khau_cu = Mat_khau_cu
+				var Kq = Doi_mat_khau(Thong_tin)
+				if (Kq == "WRONG") {
+					Th_Thong_bao.innerHTML = `<p style="color: red;">Mật khẩu cũ không đúng !</p>`
+				}
+				else if (Kq == "OK") {
+					Th_Thong_bao.innerHTML = `<p style="color: green;">Đổi mật khẩu thành công !</p>`
+				}
+				else {
+					Th_Thong_bao.innerHTML = `<p style="color: red;">Đổi mật khẩu không thành công !</p>`
+				}
+			}
+		}
+
+		//Xem trước media
+
+		function Xem_truoc_Media() {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				Th_Hinh_Xem_truoc.src = e.target.result;
+				//console.log(e.target.result)
+			}
+			reader.readAsDataURL(Th_file.files[0]);
+		}
+
+		//Xử lý khi thêm Media
+
+		Th_Dong_y_hinh.onclick = () => {
+			if (!Th_file.files[0]) {
+				Th_Thong_bao_hinh.innerHTML = "Bạn phải thêm hình ảnh !"
+			}
+			else {
+				var reader = new FileReader()
+				var Ten_Anh = JSON.parse(sessionStorage.getItem("Nguoi_dung")).Ten_dang_nhap
+				var Chuoi_nhi_phan = ""
+				var Ten_Hinh = `${Ten_Anh}.png`
+				var Kq = ""
+				reader.onload = function (e) {
+					Chuoi_nhi_phan = e.target.result;
+					var Doi_tuong = { "Ten": Ten_Hinh, "Chuoi_nhi_phan": Chuoi_nhi_phan }
+					Kq = Ghi_Media(Doi_tuong)
+					if (Kq == "OK") {
+						Th_Thong_bao_hinh.innerHTML = "Thay đổi ảnh đại diện thành công !"
+					}
+					else if (Kq == "WRONG") {
+						Th_Thong_bao_hinh.innerHTML = "Bạn đã có ảnh đại diện, không thể ghi thêm !"
+					}
+					else {
+						Th_Thong_bao_hinh.innerHTML = "Không thể thêm ảnh đại diện !"
+					}
+				}
+				reader.readAsDataURL(Th_file.files[0])
+				
+			}
+		}
+
+
+	</script>
+</body>
+
+</html>

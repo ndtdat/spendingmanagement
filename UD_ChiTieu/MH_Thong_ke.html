@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Quản lý thu</title>
+
+    <meta name="description" content="Static &amp; Dynamic Tables" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+
+    <!-- text fonts -->
+    <!-- <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" /> -->
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+
+    <!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+
+
+<body class="no-skin" style="font-family: Arial">
+    <div id="navbar" class="navbar navbar-default          ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header pull-left">
+                <a href="MH_Chinh.html" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-credit-card"></i>
+                        Quản lý Thu Chi
+                    </small>
+                </a>
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle" id="Th_Anh_dai_dien">
+                           
+                        </a>
+
+                        <ul
+                            class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                           
+
+                            <li>
+                                <a href="MH_Tai_khoan.html">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li id="Th_Thoat" onclick="XL_Thoat_Dang_nhap()">
+                                <a href="#">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <div class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+
+        <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+            <script type="text/javascript">
+                try { ace.settings.loadState('sidebar') } catch (e) { }
+            </script>
+
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <button class="btn btn-success">
+                        <i class="ace-icon fa fa-signal"></i>
+                    </button>
+
+                    <button class="btn btn-info">
+                        <i class="ace-icon fa fa-pencil"></i>
+                    </button>
+
+                    <button class="btn btn-warning">
+                        <i class="ace-icon fa fa-users"></i>
+                    </button>
+
+                    <button class="btn btn-danger">
+                        <i class="ace-icon fa fa-cogs"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-info"></span>
+
+                    <span class="btn btn-warning"></span>
+
+                    <span class="btn btn-danger"></span>
+                </div>
+            </div><!-- /.sidebar-shortcuts -->
+
+            <ul class="nav nav-list">
+                <li class="">
+                    <a href="MH_Chinh.html">
+                        <i class="menu-icon fa fa-home "></i>
+                        <span class="menu-text"> Trang chủ </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="MH_Thu.html">
+                        <i class="menu-icon fa fa-arrow-circle-o-down  "></i>
+                        <span class="menu-text"> Khoản Thu </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="MH_Chi.html">
+                        <i class="menu-icon fa fa-pencil-square-o "></i>
+                        <span class="menu-text"> Khoản Chi </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="MH_Cho_vay.html">
+                        <i class="menu-icon fa fa-external-link"></i>
+                        <span class="menu-text"> Cho Vay </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="MH_Muon_no.html">
+                        <i class="menu-icon fa fa-list-alt"></i>
+                        <span class="menu-text"> Mượn Nợ </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+
+                <li class="">
+                    <a href="MH_Thong_ke.html">
+                        <i class="menu-icon fa fa-signal"></i>
+                        <span class="menu-text"> Thống Kê </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="MH_Tai_khoan.html">
+                        <i class="menu-icon fa fa-users"></i>
+                        <span class="menu-text"> Tài Khoản </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+            </ul><!-- /.nav-list -->
+
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+                    data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Trang Chủ</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Thống kê</a>
+                        </li>
+                    </ul><!-- /.breadcrumb -->
+
+                    <div class="nav-search" id="nav-search">
+                        <form class="form-search">
+                            <span class="input-icon">
+                                <input type="text" placeholder="Search ..." class="nav-search-input"
+                                    id="nav-search-input" autocomplete="off" />
+                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                            </span>
+                        </form>
+                    </div><!-- /.nav-search -->
+                </div>
+
+                <div class="page-content">
+                    
+                    <div id="Th_Ngay_Hien_Hanh" style="font-size: 15px; color:green;">
+
+
+                    </div>
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <form class="form-inline">
+                                    <label for="Th_Chon_khoan">Chọn kiểu danh mục </label>
+                                    <select class="form-control" id="Th_Chon_khoan" onchange="Xuat_thong_ke()">
+                                        <option selected value="1">Thu - Chi</option>
+                                        <option value="2">Cho vay - Mượn nợ</option>
+
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <form class="form-inline">
+                                    <label for="Th_nam">Chọn Năm</label>
+                                    <select class="form-control" id="Th_nam" onchange="Xuat_thong_ke()">
+                                        <option value="2018">Năm 2018</option>
+                                        <option selected value="2019">Năm 2019</option>
+                                        <option value="2020">Năm 2020</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- /.page-header -->
+
+                    <div class="row">
+                        <div class="col-xs-12" id="Th_Cha">
+                            <!-- PAGE CONTENT BEGINS -->
+
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+                </div>
+            </div>
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <span class="blue bolder">Quản lý</span>
+                        Thu Chi &copy; 2019
+                    </span>
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+                        <a href="#">
+                            <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+    <script src="assets/js/jquery-2.1.4.min.js"></script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.flash.min.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>
+    <script src="assets/js/buttons.colVis.min.js"></script>
+    <script src="assets/js/dataTables.select.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="assets/js/ace-elements.min.js"></script>
+    <script src="assets/js/ace.min.js"></script>
+    <script src="Xu_ly/Xu_ly_3L.js"></script>
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        jQuery(function ($) {
+            //initiate dataTables plugin
+            var myTable =
+                $('#dynamic-table')
+                    //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                    .DataTable({
+                        bAutoWidth: false,
+                        "aoColumns": [
+                            { "bSortable": false },
+                            null, null, null, null, null,
+                            { "bSortable": false }
+                        ],
+                        "aaSorting": [],
+
+
+                        //"bProcessing": true,
+                        //"bServerSide": true,
+                        //"sAjaxSource": "http://127.0.0.1/table.php"	,
+
+                        //,
+                        //"sScrollY": "200px",
+                        //"bPaginate": false,
+
+                        //"sScrollX": "100%",
+                        //"sScrollXInner": "120%",
+                        //"bScrollCollapse": true,
+                        //Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+                        //you may want to wrap the table inside a "div.dataTables_borderWrap" element
+
+                        //"iDisplayLength": 50
+
+
+                        select: {
+                            style: 'multi'
+                        }
+                    });
+
+
+
+            $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+
+            myTable.buttons().container().appendTo($('.tableTools-container'));
+
+            //style the message box
+            var defaultCopyAction = myTable.button(1).action();
+            myTable.button(1).action(function (e, dt, button, config) {
+                defaultCopyAction(e, dt, button, config);
+                $('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+            });
+
+
+            var defaultColvisAction = myTable.button(0).action();
+            myTable.button(0).action(function (e, dt, button, config) {
+
+                defaultColvisAction(e, dt, button, config);
+
+
+                if ($('.dt-button-collection > .dropdown-menu').length == 0) {
+                    $('.dt-button-collection')
+                        .wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+                        .find('a').attr('href', '#').wrap("<li />")
+                }
+                $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+            });
+
+            ////
+
+            setTimeout(function () {
+                $($('.tableTools-container')).find('a.dt-button').each(function () {
+                    var div = $(this).find(' > div').first();
+                    if (div.length == 1) div.tooltip({ container: 'body', title: div.parent().text() });
+                    else $(this).tooltip({ container: 'body', title: $(this).text() });
+                });
+            }, 500);
+
+
+
+
+
+            myTable.on('select', function (e, dt, type, index) {
+                if (type === 'row') {
+                    $(myTable.row(index).node()).find('input:checkbox').prop('checked', true);
+                }
+            });
+            myTable.on('deselect', function (e, dt, type, index) {
+                if (type === 'row') {
+                    $(myTable.row(index).node()).find('input:checkbox').prop('checked', false);
+                }
+            });
+
+
+
+
+            /////////////////////////////////
+            //table checkboxes
+            $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+
+            //select/deselect all rows according to table header checkbox
+            $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function () {
+                var th_checked = this.checked;//checkbox inside "TH" table header
+
+                $('#dynamic-table').find('tbody > tr').each(function () {
+                    var row = this;
+                    if (th_checked) myTable.row(row).select();
+                    else myTable.row(row).deselect();
+                });
+            });
+
+            //select/deselect a row when the checkbox is checked/unchecked
+            $('#dynamic-table').on('click', 'td input[type=checkbox]', function () {
+                var row = $(this).closest('tr').get(0);
+                if (this.checked) myTable.row(row).deselect();
+                else myTable.row(row).select();
+            });
+
+
+
+            $(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+
+
+
+            //And for the first simple table, which doesn't have TableTools or dataTables
+            //select/deselect all rows according to table header checkbox
+            var active_class = 'active';
+            $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
+                var th_checked = this.checked;//checkbox inside "TH" table header
+
+                $(this).closest('table').find('tbody > tr').each(function () {
+                    var row = this;
+                    if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+                    else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+                });
+            });
+
+            //select/deselect a row when the checkbox is checked/unchecked
+            $('#simple-table').on('click', 'td input[type=checkbox]', function () {
+                var $row = $(this).closest('tr');
+                if ($row.is('.detail-row ')) return;
+                if (this.checked) $row.addClass(active_class);
+                else $row.removeClass(active_class);
+            });
+
+
+
+            /********************************/
+            //add tooltip for small view action buttons in dropdown menu
+            $('[data-rel="tooltip"]').tooltip({ placement: tooltip_placement });
+
+            //tooltip placement on right or left
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('table')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+                return 'left';
+            }
+
+
+
+
+            /***************/
+            $('.show-details-btn').on('click', function (e) {
+                e.preventDefault();
+                $(this).closest('tr').next().toggleClass('open');
+                $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+            });
+
+        })
+    </script>
+
+    <!-- ********************************************************** -->
+    <!-- Xử lý dữ liệu -->
+
+    <script>
+        //Xử lý thoát đoăng nhập
+
+        function XL_Thoat_Dang_nhap() {
+            sessionStorage.clear()
+            window.location = "MH_Dang_nhap.html"
+        }
+
+        //Kiểm tra đăng nhập và tải dữ liệu trang
+
+        if (!sessionStorage.getItem("Nguoi_dung")) {
+            window.location = 'MH_Dang_nhap.html'
+        }
+        //Đọc dữ liệu
+        //Tải ảnh đăng nhập
+        var Ten_anh = JSON.parse(sessionStorage.getItem("Nguoi_dung")).Ten_dang_nhap
+        XL_Anh_dang_nhap(Th_Anh_dai_dien, Ten_anh)
+        var Thong_tin={}
+		Thong_tin.Ten_dang_nhap=Ten_anh
+        var Danh_sach_Thu = Doc_Thong_tin_Thu(Thong_tin)
+        var Danh_sach_Chi = Doc_Thong_tin_Chi(Thong_tin)
+        var Danh_sach_Cho_vay = Doc_Thong_tin_Cho_vay(Thong_tin)
+        var Danh_sach_Muon_no = Doc_Thong_tin_Muon_no(Thong_tin)
+        var Danh_sach_Phieu_Thu_Chi = [{ 'Ten': "Tổng Thu" }, { 'Ten': "Tổng Chi" }];
+        var Danh_sach_Phieu_Vay_No = [{ 'Ten': "Tổng Cho Vay" }, { 'Ten': "Tổng Mượn Nợ" }];
+
+        //Tạo ngày hiện hành
+
+        var d = new Date();
+        var Ngay_hien_hanh = d.getDate();
+        var Thang_hien_hanh = d.getMonth() + 1;
+        var Nam_hien_hanh = d.getFullYear();
+        Th_Ngay_Hien_Hanh.innerHTML = `Hôm nay là ngày: ${Ngay_hien_hanh} - ${Thang_hien_hanh} - ${Nam_hien_hanh}`
+
+        //Mảng chứa tên các tháng
+
+        var Thang = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"]
+
+        //Lúc tải trang
+
+        Xuat_thong_ke()
+
+        //Hàm chính
+
+        function Xuat_thong_ke() {
+            var Lua_chon = Th_Chon_khoan.value
+            var Nam = Number(Th_nam.value)
+            if (Lua_chon == "1") {
+                Tao_du_lieu_bao_cao_Thu_Chi(Nam)
+            }
+            else if (Lua_chon == "2") {
+                Tao_du_lieu_bao_cao_Vay_No(Nam)
+            }
+        }
+
+        //Tạo dữ liệu thống kê Thu Chi
+
+        function Tao_du_lieu_bao_cao_Thu_Chi(Nam) {
+            var Du_lieu_bao_cao_Thu_Chi = [];
+            Danh_sach_Phieu_Thu_Chi.forEach((Phieu, index) => {
+                var nv = {}
+                var Tong_Thu = 0;
+                var Tong_Chi = 0;
+                nv.name = Phieu.Ten
+                nv.data = []
+
+                if (index == 0) {
+                    for (i = 1; i <= 12; i++) {
+                        Tong_Thu = 0
+                        Danh_sach_Thu.forEach(Khoan_thu => {
+                            if (Number(Khoan_thu.Thang) == i && Number(Khoan_thu.Nam) == Nam) {
+                                Tong_Thu += Number(Khoan_thu.So_tien)
+                            }
+                        })
+                        nv.data.push(Tong_Thu)
+                    }
+                    Du_lieu_bao_cao_Thu_Chi.push(nv);
+                } else {
+                    for (i = 1; i <= 12; i++) {
+                        Tong_Chi = 0
+                        Danh_sach_Chi.forEach(Khoan_chi => {
+                            if (Number(Khoan_chi.Thang) == i && Number(Khoan_chi.Nam) == Nam) {
+                                Tong_Chi += Number(Khoan_chi.So_tien)
+                            }
+                        })
+                        nv.data.push(Tong_Chi)
+                    }
+                    Du_lieu_bao_cao_Thu_Chi.push(nv);
+                }
+
+            })
+            Tao_Bieu_do_thong_ke_Thu_Chi(Du_lieu_bao_cao_Thu_Chi, Nam)
+        }
+        //console.log(Du_lieu_bao_cao)
+
+        //Tạo biểu đồ Thu Chi
+
+        function Tao_Bieu_do_thong_ke_Thu_Chi(Du_lieu_bao_cao_Thu_Chi, Nam) {
+            Highcharts.setOptions({
+                lang: {
+                    numericSymbols: [' Ngàn', ' Triệu', 'Tỷ'],
+                    numericSymbolMagnitude: 100000000000,
+                    decimalPoint: ',',
+                    thousandsSep: '.'
+                },
+                chart: {
+                    style: {
+                        fontFamily: 'tahoma',
+                        fontSize: 14
+                    }
+                }
+            });
+            Highcharts.chart('Th_Cha', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: `Thống kê Thu Chi  Năm ${Nam}`,
+                    style: {
+                        color: 'red',
+                        fontWeight: 'bold',
+                        fontSize: '2rem'
+                    }
+                },
+                legend: { layout: 'vertical', align: 'right', verticalAlign: 'middle' },
+                tooltip: {
+                    backgroundColor: '#FCFFC5',
+                    borderColor: 'black',
+                    borderRadius: 10,
+                    borderWidth: 3,
+                    formatter: function () {
+                        return `<b> ${this.series.name} - ${Thang[this.point.x]} </b><br/>` +
+                            Highcharts.numberFormat(this.point.y, "") + ' VND'
+                    }
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: Thang
+                },
+                yAxis: {
+                    title: {
+                        text: 'Số Tiền'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.5,
+                        borderWidth: 2
+                    }
+                },
+                series: Du_lieu_bao_cao_Thu_Chi
+            });
+        }
+
+        //Tạo dữ liệu thống kê Vay Nợ
+
+        function Tao_du_lieu_bao_cao_Vay_No(Nam) {
+            var Du_lieu_bao_cao_Vay_No = []
+            Danh_sach_Phieu_Vay_No.forEach((Phieu, index) => {
+                var nv = {}
+                var Tong_Vay = 0;
+                var Tong_No = 0;
+                nv.name = Phieu.Ten
+                nv.data = []
+
+                if (index == 0) {
+                    for (i = 1; i <= 12; i++) {
+                        Tong_Vay = 0
+                        Danh_sach_Cho_vay.forEach(Khoan_vay => {
+                            if (Number(Khoan_vay.Thoi_han.thang) == i && Number(Khoan_vay.Thoi_han.nam) == Nam) {
+                                Tong_Vay += Number(Khoan_vay.So_tien)
+                            }
+                        })
+                        nv.data.push(Tong_Vay)
+                    }
+                    Du_lieu_bao_cao_Vay_No.push(nv);
+                } else {
+                    for (i = 1; i <= 12; i++) {
+                        Tong_No = 0
+                        Danh_sach_Muon_no.forEach(Khoan_no => {
+                            if (Number(Khoan_no.Thoi_han.thang) == i && Number(Khoan_no.Thoi_han.nam) == Nam) {
+                                Tong_No += Number(Khoan_no.So_tien)
+                            }
+                        })
+                        nv.data.push(Tong_No)
+                    }
+                    Du_lieu_bao_cao_Vay_No.push(nv);
+                }
+
+            })
+            Tao_Bieu_do_thong_ke_Vay_No(Du_lieu_bao_cao_Vay_No, Nam)
+        }
+        //console.log(Du_lieu_bao_cao)
+
+        //Tạo biểu đồ Thu Chi
+
+        function Tao_Bieu_do_thong_ke_Vay_No(Du_lieu_bao_cao_Vay_No, Nam) {
+            Highcharts.setOptions({
+                lang: {
+                    numericSymbols: [' Ngàn', ' Triệu', 'Tỷ'],
+                    numericSymbolMagnitude: 100000000000,
+                    decimalPoint: ',',
+                    thousandsSep: '.'
+                },
+                chart: {
+                    style: {
+                        fontFamily: 'tahoma',
+                        fontSize: 14
+                    }
+                }
+            });
+            Highcharts.chart('Th_Cha', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: `Thống kê Vay Nợ Năm ${Nam}`,
+                    style: {
+                        color: 'red',
+                        fontWeight: 'bold',
+                        fontSize: '2rem'
+                    }
+                },
+                legend: { layout: 'vertical', align: 'right', verticalAlign: 'middle' },
+                tooltip: {
+                    backgroundColor: '#FCFFC5',
+                    borderColor: 'black',
+                    borderRadius: 10,
+                    borderWidth: 3,
+                    formatter: function () {
+                        return `<b> ${this.series.name} - ${Thang[this.point.x]} </b><br/>` +
+                            Highcharts.numberFormat(this.point.y, "") + ' VND'
+                    }
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: Thang
+                },
+                yAxis: {
+                    title: {
+                        text: 'Số Tiền'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.5,
+                        borderWidth: 2
+                    }
+                },
+                series: Du_lieu_bao_cao_Vay_No
+            });
+        }
+    </script>
+</body>
+
+</html>
